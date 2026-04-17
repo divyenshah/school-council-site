@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vote for Leadership & Vision</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 20px; }
+        header { background: #2c3e50; color: white; padding: 2rem; text-align: center; border-radius: 10px; }
+        .section { margin: 40px 0; }
+        h2 { color: #2980b9; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        .goal-list { background: #f9f9f9; padding: 20px; border-left: 5px solid #2980b9; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1> Dhven Shah</h1>
+    <h1>Empowering Our School Community</h1>
+    <p>Dedicated to Progress, Integrity, and Excellence</p>
+</header>
+
+<div class="section">
+    <h2>Why Choose Me?</h2>
+    <p>Leadership isn't just about a title; it's about service. With a strong background in scientific discipline and a commitment to helping fellow students excel, I aim to be the bridge between the student body and the administration.</p>
+</div>
+
+<div class="section">
+    <h2>My Vision for the Council</h2>
+    <div class="goal-list">
+        <ul>
+            {% for goal in goals %}
+                <li><strong>{{ goal }}</strong></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+<div class="section">
+    <h2>Academic & Technical Strength</h2>
+    <p>Whether it's solving complex problems in maths or assisting classmates with science challenges, I believe in leading by example. The school council needs someone who can manage projects efficiently and deliver results.</p>
+</div>
+
+</body>
+</html>
