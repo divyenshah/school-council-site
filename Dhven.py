@@ -16,5 +16,5 @@ def index():
     ]
     return render_template('index.html', goals=goals)
 
-if __name__ == '__main__':
-    app.run(debug=True, port=5005, use_reloader=False)
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=10000)
