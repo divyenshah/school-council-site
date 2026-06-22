@@ -4,176 +4,230 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Representative Portal</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #f8fafc;        /* Clean, bright off-white background */
-            --card-bg: #ffffff;         /* Crisp white for content areas */
-            --text-main: #0f172a;       /* Deep obsidian black for maximum readability */
-            --text-muted: #475569;     /* Slate gray for formal descriptions */
-            --primary: #1e3a8a;        /* Oxford / Navy Blue for institutional trust */
-            --primary-hover: #172554;  /* Darker navy for interactive states */
-            --accent: #64748b;         /* Muted steel gray for administrative subtle borders */
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --primary: #1e3a8a;
+            --primary-hover: #172554;
+            --accent: #64748b;
         }
 
+        /* Resetting constraints to guarantee visibility */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
             font-family: 'Inter', sans-serif;
-            scroll-behavior: smooth;
         }
 
         body {
             background-color: var(--bg-color);
             color: var(--text-main);
-            display: flex;
             min-height: 100vh;
+            display: block; /* Standard block layout to prevent layout collapses */
         }
 
-        /* Web App Sticky Sidebar Navigation */
-        nav {
-            position: fixed;
-            width: 260px;
-            height: 100vh;
+        /* Top Institutional Header Banner */
+        header {
             background: #0f172a;
             color: white;
-            padding: 2rem 1.5rem;
+            padding: 1.5rem 2rem;
             display: flex;
-            flex-direction: column;
             justify-content: space-between;
-            z-index: 100;
+            align-items: center;
+            border-bottom: 4px solid var(--primary);
         }
 
-        nav .logo {
+        header .logo {
             font-size: 1.1rem;
             font-weight: 700;
             letter-spacing: -0.5px;
-            color: #f8fafc;
-            border-bottom: 1px solid #334155;
-            padding-bottom: 1rem;
-            margin-bottom: 3rem;
         }
 
-        nav ul {
-            list-style: none;
-            flex-grow: 1;
-        }
-
-        nav ul li {
-            margin-bottom: 0.75rem;
-        }
-
-        nav ul li a {
+        header .status {
+            font-size: 0.8rem;
             color: #94a3b8;
-            text-decoration: none;
-            display: block;
-            padding: 0.75rem 1rem;
-            border-radius: 8px;
-            font-weight: 500;
-            transition: all 0.2s ease;
-        }
-
-        nav ul li a:hover, nav ul li a.active {
             background: #1e293b;
-            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
         }
 
-        /* Main App Container */
-        main {
-            margin-left: 280px; /* Clean breathing space from sidebar */
-            flex-grow: 1;
-            padding: 4rem 3rem;
-            max-width: 1100px;
+        /* Content Container */
+        .wrapper {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
         }
 
         section {
-            padding: 4rem 0;
-            border-bottom: 1px solid #e2e8f0;
-        }
-
-        h2, h3 {
-            font-family: 'Inter', sans-serif;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            color: var(--text-main);
-        }
-
-        h2 {
-            font-size: 2.25rem;
-            margin-bottom: 1.5rem;
-        }
-
-        p.subtitle {
-            color: var(--text-muted);
-            font-size: 1.125rem;
-            margin-bottom: 2.5rem;
-            max-width: 700px;
-            line-height: 1.6;
-        }
-
-        /* App-Style Dashboard Grid */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .card {
             background: var(--card-bg);
             border: 1px solid #e2e8f0;
             border-radius: 12px;
-            padding: 2rem;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
             box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
+        h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 0.5rem;
         }
 
-        .card h3 {
-            font-size: 1.25rem;
-            margin-bottom: 0.7rem;
-        }
-
-        .card p {
+        p {
             color: var(--text-muted);
+            font-size: 1.05rem;
             line-height: 1.6;
             margin-bottom: 1.5rem;
         }
 
-        /* Modern App Buttons */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.75rem 1.25rem;
+        /* Manifesto / Goals List */
+        .goals-list {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .goals-list li {
+            background: #f1f5f9;
+            margin-bottom: 0.75rem;
+            padding: 1rem;
             border-radius: 8px;
+            border-left: 4px solid var(--primary);
             font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            text-decoration: none;
-            border: none;
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: var(--primary-hover);
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 1px solid #cbd5e1;
             color: var(--text-main);
         }
 
-        .btn-outline:hover {
+        /* Experience Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .framework-box {
             background: #f8fafc;
-            border-
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .framework-box h3 {
+            font-size: 1.15rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        /* Form styling */
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        select, textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        select:focus, textarea:focus {
+            border-color: var(--primary);
+        }
+
+        .btn {
+            background: var(--primary);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            width: 100%;
+            transition: background 0.2s;
+        }
+
+        .btn:hover {
+            background: var(--primary-hover);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">STUDENT GOVERNANCE PORTAL</div>
+        <div class="status">System Status: Institutional Mode</div>
+    </header>
+
+    <div class="wrapper">
+
+        <section>
+            <h2>Strategic Objectives</h2>
+            <p>Welcome to the official communication node. This platform acts as a structured initiative to bridge student body expectations directly with executive institutional management for the upcoming academic council transition.</p>
+            
+            <ul class="goals-list">
+                {% for goal in goals %}
+                    <li>{{ goal }}</li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <section>
+            <h2>Qualifications & Strategic Experience</h2>
+            <p>An overview of communication skillsets, international debate experience, and web infrastructure development assets.</p>
+            
+            <div class="grid">
+                <div class="framework-box">
+                    <h3>Advanced Communication</h3>
+                    <p style="font-size: 0.95rem; margin-bottom: 0;">Trained in rigorous public debate, framework alignment, and handling complex group dynamics at the Oxford MUN assembly format.</p>
+                </div>
+                <div class="framework-box">
+                    <h3>Systems Management</h3>
+                    <p style="font-size: 0.95rem; margin-bottom: 0;">Capable of deploying cloud servers, coding automated logic layers, and tracking consultation data arrays securely using Flask.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Student Body Consultation Forum</h2>
+            <p>Log your operational requirements, campus recommendations, or infrastructure suggestions directly into the secure server stream.</p>
+            
+            <form action="/submit-feedback" method="POST" style="margin-top: 1rem;">
+                <div class="form-group">
+                    <label for="grade">Cohort Classification (Grade)</label>
+                    <select id="grade" name="grade" required>
+                        <option value="">Select Grade Level...</option>
+                        <option value="9">Grade 9</option>
+                        <option value="10">Grade 10</option>
+                        <option value="11">Grade 11</option>
+                        <option value="12">Grade 12</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Infrastructure Recommendation</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Input observations regarding campus protocols, event coordination, or facility enhancements..." required></textarea>
+                </div>
+                <button type="submit" class="btn">Submit Memorandum</button>
+            </form>
+        </section>
+
+    </div>
+
+</body>
+</html>
