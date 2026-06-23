@@ -11,8 +11,9 @@ def index():
     # You can pass your manifesto points or goals here
     goals = [
         "Improve student-teacher communication",
-        "Organize more inter-school tech and sports events",
-        "Introduce a transparent feedback system for school facilities"
+        "Organize more inter-school events",
+        "Introduce a transparent feedback system for school facilities",
+        "Improve essential facilities"
     ]
     return render_template('index.html', goals=goals)
 
